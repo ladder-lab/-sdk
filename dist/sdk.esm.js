@@ -40,7 +40,7 @@ var Rounding;
 })(Rounding || (Rounding = {}));
 
 var FACTORY_ADDRESS = (chainId) => chainId === 56 ? '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3' : '0x58efa15b89781ec6976a829b9f6e45623ad68429';
-var INIT_CODE_HASH = (chainId) => chainId === 56 ? '' : '0x419abd54eca263cfa3a929ec78f33149e6666220be682934d54d6166311a4ce7';
+var INIT_CODE_HASH = (chainId) => chainId === 56 ? '0x9ec8c8ff3b18dfb14fac50eaf8f1f0222c424b82ab776a7b394271de4c1a8e9f' : '0x419abd54eca263cfa3a929ec78f33149e6666220be682934d54d6166311a4ce7';
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
 
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);
