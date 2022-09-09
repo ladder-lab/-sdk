@@ -39,8 +39,43 @@ var Rounding;
   Rounding[Rounding["ROUND_UP"] = 2] = "ROUND_UP";
 })(Rounding || (Rounding = {}));
 
-var FACTORY_ADDRESS = (chainId) => chainId === 56 ? '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3' : '0x58efa15b89781ec6976a829b9f6e45623ad68429';
-var INIT_CODE_HASH = (chainId) => chainId === 56 ? '0x9ec8c8ff3b18dfb14fac50eaf8f1f0222c424b82ab776a7b394271de4c1a8e9f' : '0x419abd54eca263cfa3a929ec78f33149e6666220be682934d54d6166311a4ce7';
+const factory_addresses721 = (chainId) => {
+  const addresses = {
+    [56]: '',
+    [4]: '0xfE354EA7a06f6dBDEF06F087C4Be5A6d4E021442'
+  }
+  return addresses[chainId] ? addresses[4] : addresses[chainId]
+}
+
+const factory_addresses = (chainId) => {
+  const addresses = {
+    [56]: '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3',
+    [4]: '0x58efa15b89781ec6976a829b9f6e45623ad68429'
+  }
+  return addresses[chainId] ? addresses[4] : addresses[chainId]
+}
+
+var FACTORY_ADDRESS = (chainId, is721Pair) => is721Pair ? factory_addresses721(chainId) : factory_addresses(chainId)
+
+
+const init_hash_721 = (chainId) => {
+  const hash = {
+    [56]: '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3',
+    [4]: '0xdb6b514c6fb54b9e4969d5ebc0fb5b30854c4f1ac381ba9306036e8cb08c7cbe'
+  }
+  return hash[chainId] ? hash[4] : hash[chainId]
+}
+
+const init_hash = (chainId) => {
+  const hash = {
+    [56]: '0x9ec8c8ff3b18dfb14fac50eaf8f1f0222c424b82ab776a7b394271de4c1a8e9f',
+    [4]: '0x419abd54eca263cfa3a929ec78f33149e6666220be682934d54d6166311a4ce7'
+  }
+  return hash[chainId] ? hash[4] : hash[chainId]
+}
+
+var INIT_CODE_HASH = (chainId, is721Pair) => is721Pair ? init_hash_721(chainId) : init_hash(chainId)
+
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
 
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);
@@ -757,6 +792,26 @@ var Price = /*#__PURE__*/function (_Fraction) {
   return Price;
 }(Fraction);
 
+
+// function getHashAddress(token, id) {
+//   return getAddress(`0x${keccak256(['bytes'], [pack(['address', 'uint256'], [token, id])]).slice(-40)}`)
+// }
+
+// function generateErc20(token) {
+//   if (!token) return undefined
+//   const is1155 = !!token.is1155
+
+//   return is1155
+//     ? new Token(
+//       token.chainId,
+//       getHashAddress(token.address, +token.tokenId),
+//       0,
+//       token.symbol,
+//       token.name
+//     )
+//     : token
+// }
+
 var PAIR_ADDRESS_CACHE = {};
 var Pair = /*#__PURE__*/function () {
   function Pair(tokenAmountA, tokenAmountB) {
@@ -767,6 +822,8 @@ var Pair = /*#__PURE__*/function () {
   }
 
   Pair.getAddress = function getAddress(tokenA, tokenB) {
+    // const [tokenA, tokenB] = [generateErc20(token1), generateErc20(token2)]
+    const is721Pair = !!tokenA.is721 || !!tokenB.is721
     var _PAIR_ADDRESS_CACHE, _PAIR_ADDRESS_CACHE$t;
 
     var tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA]; // does safety checks
@@ -774,7 +831,7 @@ var Pair = /*#__PURE__*/function () {
     if (((_PAIR_ADDRESS_CACHE = PAIR_ADDRESS_CACHE) === null || _PAIR_ADDRESS_CACHE === void 0 ? void 0 : (_PAIR_ADDRESS_CACHE$t = _PAIR_ADDRESS_CACHE[tokens[0].address]) === null || _PAIR_ADDRESS_CACHE$t === void 0 ? void 0 : _PAIR_ADDRESS_CACHE$t[tokens[1].address]) === undefined) {
       var _PAIR_ADDRESS_CACHE2, _extends2, _extends3;
 
-      PAIR_ADDRESS_CACHE = _extends({}, PAIR_ADDRESS_CACHE, (_extends3 = {}, _extends3[tokens[0].address] = _extends({}, (_PAIR_ADDRESS_CACHE2 = PAIR_ADDRESS_CACHE) === null || _PAIR_ADDRESS_CACHE2 === void 0 ? void 0 : _PAIR_ADDRESS_CACHE2[tokens[0].address], (_extends2 = {}, _extends2[tokens[1].address] = getCreate2Address(FACTORY_ADDRESS(tokenA.chainId), keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]), INIT_CODE_HASH(tokenA.chainId)), _extends2)), _extends3));
+      PAIR_ADDRESS_CACHE = _extends({}, PAIR_ADDRESS_CACHE, (_extends3 = {}, _extends3[tokens[0].address] = _extends({}, (_PAIR_ADDRESS_CACHE2 = PAIR_ADDRESS_CACHE) === null || _PAIR_ADDRESS_CACHE2 === void 0 ? void 0 : _PAIR_ADDRESS_CACHE2[tokens[0].address], (_extends2 = {}, _extends2[tokens[1].address] = getCreate2Address(FACTORY_ADDRESS(tokenA.chainId, is721Pair), keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]), INIT_CODE_HASH(tokenA.chainId, is721Pair)), _extends2)), _extends3));
     }
 
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address];
