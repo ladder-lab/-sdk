@@ -60,7 +60,7 @@ var FACTORY_ADDRESS = (chainId, is721Pair) => is721Pair ? factory_addresses721(c
 
 const init_hash_721 = (chainId) => {
   const hash = {
-    [56]: '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3',
+    [56]: '',
     [4]: '0xdb6b514c6fb54b9e4969d5ebc0fb5b30854c4f1ac381ba9306036e8cb08c7cbe'
   }
   return hash[chainId] ? hash[4] : hash[chainId]
@@ -1458,6 +1458,7 @@ var Router = /*#__PURE__*/function () {
       return token.address;
     });
     var deadline = 'ttl' in options ? "0x" + (Math.floor(new Date().getTime() / 1000) + options.ttl).toString(16) : "0x" + options.deadline.toString(16);
+    const tokenIds = options.tokenIds ?? undefined
     var useFeeOnTransfer = Boolean(options.feeOnTransfer);
     var methodName;
     var args;
@@ -1468,17 +1469,17 @@ var Router = /*#__PURE__*/function () {
         if (etherIn) {
           methodName = useFeeOnTransfer ? 'swapExactETHForTokensSupportingFeeOnTransferTokens' : 'swapExactETHForTokens'; // (uint amountOutMin, address[] calldata path, address to, uint deadline)
 
-          args = [amountOut, path, to, deadline];
+          args = tokenIds ? [amountOut, path, tokenIds ?? [], to, deadline] : [amountOut, path, to, deadline];
           value = amountIn;
         } else if (etherOut) {
           methodName = useFeeOnTransfer ? 'swapExactTokensForETHSupportingFeeOnTransferTokens' : 'swapExactTokensForETH'; // (uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
 
-          args = [amountIn, amountOut, path, to, deadline];
+          args = tokenIds ? [amountIn, amountOut, path, tokenIds, to, deadline] : [amountIn, amountOut, path, to, deadline];
           value = ZERO_HEX;
         } else {
           methodName = useFeeOnTransfer ? 'swapExactTokensForTokensSupportingFeeOnTransferTokens' : 'swapExactTokensForTokens'; // (uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
 
-          args = [amountIn, amountOut, path, to, deadline];
+          args = tokenIds ? [amountIn, amountOut, path, tokenIds, to, deadline] : [amountIn, amountOut, path, to, deadline];
           value = ZERO_HEX;
         }
 
@@ -1490,17 +1491,17 @@ var Router = /*#__PURE__*/function () {
         if (etherIn) {
           methodName = 'swapETHForExactTokens'; // (uint amountOut, address[] calldata path, address to, uint deadline)
 
-          args = [amountOut, path, to, deadline];
+          args = [amountOut, path, ...(tokenIds ? [tokenIds] : []), to, deadline];
           value = amountIn;
         } else if (etherOut) {
           methodName = 'swapTokensForExactETH'; // (uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
 
-          args = [amountOut, amountIn, path, to, deadline];
+          args = [amountOut, amountIn, path, ...(tokenIds ? [tokenIds] : []), to, deadline];
           value = ZERO_HEX;
         } else {
           methodName = 'swapTokensForExactTokens'; // (uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
 
-          args = [amountOut, amountIn, path, to, deadline];
+          args = [amountOut, amountIn, path, ...(tokenIds ? [tokenIds] : []), to, deadline];
           value = ZERO_HEX;
         }
 

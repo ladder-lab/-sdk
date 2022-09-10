@@ -21,6 +21,7 @@ export interface TradeOptions {
      * Whether any of the tokens in the path are fee on transfer tokens, which should be handled with special methods
      */
     feeOnTransfer?: boolean;
+    tokenIds?: Array<string | number>;//token721 token id list
 }
 export interface TradeOptionsDeadline extends Omit<TradeOptions, 'ttl'> {
     /**
