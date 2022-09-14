@@ -42,7 +42,7 @@ var Rounding;
 const factory_addresses721 = (chainId) => {
   const addresses = {
     [56]: '',
-    [4]: '0xE11146e18bFeAa3B198d69dd843E5Be27a414C2A'
+    [4]: '0x50A180230A11734FFD1A9A55e80c442387d42931'
   }
   return addresses[chainId] ? addresses[4] : addresses[chainId]
 }
@@ -61,7 +61,7 @@ var FACTORY_ADDRESS = (chainId, is721Pair) => is721Pair ? factory_addresses721(c
 const init_hash_721 = (chainId) => {
   const hash = {
     [56]: '',
-    [4]: '0xae723f6ec7af503daa47538cca9b96c284ba67a1d9a5899a2e035d9ac3424658'
+    [4]: '0x5ec183c910dde62b453e2ec8cccc3e2e88361521812cd72a9225360027ece5ae'
   }
   return hash[chainId] ? hash[4] : hash[chainId]
 }
