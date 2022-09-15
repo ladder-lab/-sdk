@@ -50,7 +50,7 @@ const factory_addresses721 = (chainId) => {
 const factory_addresses = (chainId) => {
   const addresses = {
     [56]: '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3',
-    [4]: '0x58efa15b89781ec6976a829b9f6e45623ad68429'
+    [4]: '0xB4AA7ce0558A8EbfC943928d6F3E5ceCc1650a46'
   }
   return addresses[chainId] ? addresses[4] : addresses[chainId]
 }
@@ -69,7 +69,7 @@ const init_hash_721 = (chainId) => {
 const init_hash = (chainId) => {
   const hash = {
     [56]: '0x9ec8c8ff3b18dfb14fac50eaf8f1f0222c424b82ab776a7b394271de4c1a8e9f',
-    [4]: '0x419abd54eca263cfa3a929ec78f33149e6666220be682934d54d6166311a4ce7'
+    [4]: '0x7842a3ea267789f9cac67fced95cf3f35c1f5f518317922ae0e6889f2e088f0b'
   }
   return hash[chainId] ? hash[4] : hash[chainId]
 }
