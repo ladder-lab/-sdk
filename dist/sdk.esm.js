@@ -42,17 +42,19 @@ var Rounding;
 const factory_addresses721 = (chainId) => {
   const addresses = {
     [56]: '',
-    [4]: '0x50A180230A11734FFD1A9A55e80c442387d42931'
+    [4]: '0x50A180230A11734FFD1A9A55e80c442387d42931',
+    [5]: '0x2ee47767bd4127AD652987A6ad7d2c190d8c996D'
   }
-  return addresses[chainId] ? addresses[4] : addresses[chainId]
+  return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
 
 const factory_addresses = (chainId) => {
   const addresses = {
     [56]: '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3',
-    [4]: '0xB4AA7ce0558A8EbfC943928d6F3E5ceCc1650a46'
+    [4]: '0xB4AA7ce0558A8EbfC943928d6F3E5ceCc1650a46',
+    [5]: '0x83b115AdC58A951B77cD249b41977B2Fd1f13772'
   }
-  return addresses[chainId] ? addresses[4] : addresses[chainId]
+  return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
 
 var FACTORY_ADDRESS = (chainId, is721Pair) => is721Pair ? factory_addresses721(chainId) : factory_addresses(chainId)
@@ -61,17 +63,19 @@ var FACTORY_ADDRESS = (chainId, is721Pair) => is721Pair ? factory_addresses721(c
 const init_hash_721 = (chainId) => {
   const hash = {
     [56]: '',
-    [4]: '0x5ec183c910dde62b453e2ec8cccc3e2e88361521812cd72a9225360027ece5ae'
+    [4]: '0x5ec183c910dde62b453e2ec8cccc3e2e88361521812cd72a9225360027ece5ae',
+    [5]: '0xc70cd6d9850c13724befc7744af211c47bfa8e45f830115c02f9d1c473f31f40'
   }
-  return hash[chainId] ? hash[4] : hash[chainId]
+  return hash[chainId] ? hash[chainId] : hash[5]
 }
 
 const init_hash = (chainId) => {
   const hash = {
     [56]: '0x9ec8c8ff3b18dfb14fac50eaf8f1f0222c424b82ab776a7b394271de4c1a8e9f',
-    [4]: '0x7842a3ea267789f9cac67fced95cf3f35c1f5f518317922ae0e6889f2e088f0b'
+    [4]: '0x7842a3ea267789f9cac67fced95cf3f35c1f5f518317922ae0e6889f2e088f0b',
+    [5]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069'
   }
-  return hash[chainId] ? hash[4] : hash[chainId]
+  return hash[chainId] ? hash[chainId] : hash[5]
 }
 
 var INIT_CODE_HASH = (chainId, is721Pair) => is721Pair ? init_hash_721(chainId) : init_hash(chainId)
