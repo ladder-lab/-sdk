@@ -659,6 +659,10 @@ var CurrencyAmount = /*#__PURE__*/function (_Fraction) {
       rounding = Rounding.ROUND_DOWN;
     }
 
+    if (this.currency.decimals === 0) {
+      return _Fraction.prototype.toFixed.call(this, 0, format, rounding);
+    }
+
     !(decimalPlaces <= this.currency.decimals) ? process.env.NODE_ENV !== "production" ? invariant(false, 'DECIMALS') : invariant(false) : void 0;
     return _Fraction.prototype.toFixed.call(this, decimalPlaces, format, rounding);
   };
