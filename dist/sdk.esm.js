@@ -22,6 +22,7 @@ var ChainId;
   ChainId[ChainId["G\xD6RLI"] = 5] = "G\xD6RLI";
   ChainId[ChainId["KOVAN"] = 42] = "KOVAN";
   ChainId[ChainId["BSC"] = 56] = "BSC";
+  ChainId[ChainId["SEPOLIA"] = 11155111] = "SEPOLIA"
 })(ChainId || (ChainId = {}));
 
 var TradeType;
@@ -43,7 +44,8 @@ const factory_addresses721 = (chainId) => {
   const addresses = {
     [56]: '',
     [4]: '0x50A180230A11734FFD1A9A55e80c442387d42931',
-    [5]: '0xfE354EA7a06f6dBDEF06F087C4Be5A6d4E021442'
+    [5]: '0xfE354EA7a06f6dBDEF06F087C4Be5A6d4E021442',
+    [11155111]: '0x09B78CACaCC648d821924656b87D5FD2eb05E20d'
   }
   return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
@@ -52,7 +54,8 @@ const factory_addresses = (chainId) => {
   const addresses = {
     [56]: '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3',
     [4]: '0xB4AA7ce0558A8EbfC943928d6F3E5ceCc1650a46',
-    [5]: '0x075333bF761555D28D78E40232ABdC548083C3D7'
+    [5]: '0x075333bF761555D28D78E40232ABdC548083C3D7',
+    [11155111]: '0x83b115AdC58A951B77cD249b41977B2Fd1f13772'
   }
   return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
@@ -64,7 +67,8 @@ const init_hash_721 = (chainId) => {
   const hash = {
     [56]: '',
     [4]: '0x5ec183c910dde62b453e2ec8cccc3e2e88361521812cd72a9225360027ece5ae',
-    [5]: '0x0c1c6aa59d5605cb5e03b2231bdcf0f5aac2ee335d521e7780d25cdb5bfcae07'
+    [5]: '0x0c1c6aa59d5605cb5e03b2231bdcf0f5aac2ee335d521e7780d25cdb5bfcae07',
+    [11155111]: '0x5acff355a68640e94260f0b7e504e22ab80d937541341ce2e1a48a3a55d4d106'
   }
   return hash[chainId] ? hash[chainId] : hash[5]
 }
@@ -73,7 +77,8 @@ const init_hash = (chainId) => {
   const hash = {
     [56]: '0x9ec8c8ff3b18dfb14fac50eaf8f1f0222c424b82ab776a7b394271de4c1a8e9f',
     [4]: '0x7842a3ea267789f9cac67fced95cf3f35c1f5f518317922ae0e6889f2e088f0b',
-    [5]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069'
+    [5]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069',
+    [11155111]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069'
   }
   return hash[chainId] ? hash[chainId] : hash[5]
 }
@@ -478,7 +483,7 @@ function currencyEquals(currencyA, currencyB) {
     return currencyA === currencyB;
   }
 }
-var WETH = (_WETH = {}, _WETH[ChainId.MAINNET] = /*#__PURE__*/new Token(ChainId.MAINNET, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.ROPSTEN] = /*#__PURE__*/new Token(ChainId.ROPSTEN, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.RINKEBY] = /*#__PURE__*/new Token(ChainId.RINKEBY, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.GÖRLI] = /*#__PURE__*/new Token(ChainId.GÖRLI, '0x626B5c394542960faa9495e64E812d17D5B605F9', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.KOVAN] = /*#__PURE__*/new Token(ChainId.KOVAN, '0xd0A1E359811322d97991E03f863a0C30C2cF029C', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.BSC] = /*#__PURE__*/new Token(ChainId.BSC, '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', 18, 'WBNB', 'Wrapped BNB'), _WETH);
+var WETH = (_WETH = {}, _WETH[ChainId.MAINNET] = /*#__PURE__*/new Token(ChainId.MAINNET, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.ROPSTEN] = /*#__PURE__*/new Token(ChainId.ROPSTEN, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.RINKEBY] = /*#__PURE__*/new Token(ChainId.RINKEBY, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.GÖRLI] = /*#__PURE__*/new Token(ChainId.GÖRLI, '0x626B5c394542960faa9495e64E812d17D5B605F9', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.KOVAN] = /*#__PURE__*/new Token(ChainId.KOVAN, '0xd0A1E359811322d97991E03f863a0C30C2cF029C', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.SEPOLIA] = /*#__PURE__*/new Token(ChainId.SEPOLIA, '0xA4560E8B4694B437d77452eBc2dE179AAA1137C3', 18, 'WETH', 'Wrapped Ether'), _WETH[ChainId.BSC] = /*#__PURE__*/new Token(ChainId.BSC, '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', 18, 'WBNB', 'Wrapped BNB'), _WETH);
 
 var _toSignificantRoundin, _toFixedRounding;
 var Decimal = /*#__PURE__*/toFormat(_Decimal);
