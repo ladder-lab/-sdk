@@ -14,6 +14,7 @@ export declare function tradeComparator(a: Trade, b: Trade): number;
 export interface BestTradeOptions {
     maxNumResults?: number;
     maxHops?: number;
+    customId?: boolean
 }
 /**
  * Represents a trade executed against a list of pairs.
@@ -101,6 +102,6 @@ export declare class Trade {
      * @param originalAmountOut used in recursion; the original value of the currencyAmountOut parameter
      * @param bestTrades used in recursion; the current list of best trades
      */
-    static bestTradeExactOut(pairs: Pair[], currencyIn: Currency, currencyAmountOut: CurrencyAmount, { maxNumResults, maxHops }?: BestTradeOptions, currentPairs?: Pair[], originalAmountOut?: CurrencyAmount, bestTrades?: Trade[]): Trade[];
+    static bestTradeExactOut(pairs: Pair[], currencyIn: Currency, currencyAmountOut: CurrencyAmount, { maxNumResults, maxHops, customId }: BestTradeOptions, currentPairs?: Pair[], originalAmountOut?: CurrencyAmount, bestTrades?: Trade[]): Trade[];
 }
 export {};
