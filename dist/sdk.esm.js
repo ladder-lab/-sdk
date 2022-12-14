@@ -95,6 +95,7 @@ var FIVE = /*#__PURE__*/JSBI.BigInt(5);
 var TEN = /*#__PURE__*/JSBI.BigInt(10);
 var _100 = /*#__PURE__*/JSBI.BigInt(100);
 var _997 = /*#__PURE__*/JSBI.BigInt(997);
+var _947 = /*#__PURE__*/JSBI.BigInt(947);
 var _1000 = /*#__PURE__*/JSBI.BigInt(1000);
 var SolidityType;
 
@@ -805,26 +806,6 @@ var Price = /*#__PURE__*/function (_Fraction) {
   return Price;
 }(Fraction);
 
-
-// function getHashAddress(token, id) {
-//   return getAddress(`0x${keccak256(['bytes'], [pack(['address', 'uint256'], [token, id])]).slice(-40)}`)
-// }
-
-// function generateErc20(token) {
-//   if (!token) return undefined
-//   const is1155 = !!token.is1155
-
-//   return is1155
-//     ? new Token(
-//       token.chainId,
-//       getHashAddress(token.address, +token.tokenId),
-//       0,
-//       token.symbol,
-//       token.name
-//     )
-//     : token
-// }
-
 var PAIR_ADDRESS_CACHE = {};
 var Pair = /*#__PURE__*/function () {
   function Pair(tokenAmountA, tokenAmountB) {
@@ -904,17 +885,18 @@ var Pair = /*#__PURE__*/function () {
     return [outputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))];
   };
 
-  _proto.getInputAmount = function getInputAmount(outputAmount) {
+  _proto.getInputAmount = function getInputAmount(outputAmount, customId) {
     !this.involvesToken(outputAmount.token) ? process.env.NODE_ENV !== "production" ? invariant(false, 'TOKEN') : invariant(false) : void 0;
 
     if (JSBI.equal(this.reserve0.raw, ZERO) || JSBI.equal(this.reserve1.raw, ZERO) || JSBI.greaterThanOrEqual(outputAmount.raw, this.reserveOf(outputAmount.token).raw)) {
       throw new InsufficientReservesError();
     }
+    const hasFee = !!customId && outputAmount.token.is721
 
     var outputReserve = this.reserveOf(outputAmount.token);
     var inputReserve = this.reserveOf(outputAmount.token.equals(this.token0) ? this.token1 : this.token0);
     var numerator = JSBI.multiply(JSBI.multiply(inputReserve.raw, outputAmount.raw), _1000);
-    var denominator = JSBI.multiply(JSBI.subtract(outputReserve.raw, outputAmount.raw), _997);
+    var denominator = JSBI.multiply(JSBI.subtract(outputReserve.raw, outputAmount.raw), hasFee ? _947 : _997);
     var inputAmount = new TokenAmount(outputAmount.token.equals(this.token0) ? this.token1 : this.token0, JSBI.add(JSBI.divide(numerator, denominator), ONE));
     return [inputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))];
   };
@@ -1174,7 +1156,7 @@ function wrappedCurrency(currency, chainId) {
 
 
 var Trade = /*#__PURE__*/function () {
-  function Trade(route, amount, tradeType) {
+  function Trade(route, amount, tradeType, customId) {
     var amounts = new Array(route.path.length);
     var nextPairs = new Array(route.pairs.length);
 
@@ -1199,7 +1181,7 @@ var Trade = /*#__PURE__*/function () {
       for (var _i = route.path.length - 1; _i > 0; _i--) {
         var _pair = route.pairs[_i - 1];
 
-        var _pair$getInputAmount = _pair.getInputAmount(amounts[_i]),
+        var _pair$getInputAmount = _pair.getInputAmount(amounts[_i], customId),
           inputAmount = _pair$getInputAmount[0],
           _nextPair = _pair$getInputAmount[1];
 
@@ -1375,7 +1357,7 @@ var Trade = /*#__PURE__*/function () {
       maxNumResults = _ref2$maxNumResults === void 0 ? 3 : _ref2$maxNumResults,
       _ref2$maxHops = _ref2.maxHops,
       maxHops = _ref2$maxHops === void 0 ? 3 : _ref2$maxHops;
-
+    const customId = !!_ref2.customId
     if (currentPairs === void 0) {
       currentPairs = [];
     }
@@ -1406,7 +1388,7 @@ var Trade = /*#__PURE__*/function () {
       try {
         ;
 
-        var _pair$getInputAmount2 = pair.getInputAmount(amountOut);
+        var _pair$getInputAmount2 = pair.getInputAmount(amountOut, customId);
 
         amountIn = _pair$getInputAmount2[0];
       } catch (error) {
@@ -1420,13 +1402,13 @@ var Trade = /*#__PURE__*/function () {
 
 
       if (amountIn.token.equals(tokenIn)) {
-        sortedInsert(bestTrades, new Trade(new Route([pair].concat(currentPairs), currencyIn, originalAmountOut.currency), originalAmountOut, TradeType.EXACT_OUTPUT), maxNumResults, tradeComparator);
+        sortedInsert(bestTrades, new Trade(new Route([pair].concat(currentPairs), currencyIn, originalAmountOut.currency), originalAmountOut, TradeType.EXACT_OUTPUT, customId), maxNumResults, tradeComparator);
       } else if (maxHops > 1 && pairs.length > 1) {
         var pairsExcludingThisPair = pairs.slice(0, i).concat(pairs.slice(i + 1, pairs.length)); // otherwise, consider all the other paths that arrive at this token as long as we have not exceeded maxHops
 
         Trade.bestTradeExactOut(pairsExcludingThisPair, currencyIn, amountIn, {
           maxNumResults: maxNumResults,
-          maxHops: maxHops - 1
+          maxHops: maxHops - 1,
         }, [pair].concat(currentPairs), originalAmountOut, bestTrades);
       }
     }
