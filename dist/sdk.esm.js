@@ -45,7 +45,7 @@ const factory_addresses721 = (chainId) => {
     [56]: '',
     [4]: '0x50A180230A11734FFD1A9A55e80c442387d42931',
     [5]: '0xfE354EA7a06f6dBDEF06F087C4Be5A6d4E021442',
-    [11155111]: '0x09B78CACaCC648d821924656b87D5FD2eb05E20d'
+    [11155111]: '0x6413e73875EF1B4D315D5247bdc6d3BF311de4e5'
   }
   return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
@@ -68,7 +68,7 @@ const init_hash_721 = (chainId) => {
     [56]: '',
     [4]: '0x5ec183c910dde62b453e2ec8cccc3e2e88361521812cd72a9225360027ece5ae',
     [5]: '0x0c1c6aa59d5605cb5e03b2231bdcf0f5aac2ee335d521e7780d25cdb5bfcae07',
-    [11155111]: '0x5acff355a68640e94260f0b7e504e22ab80d937541341ce2e1a48a3a55d4d106'
+    [11155111]: '0xc2bc06960c042b0e4df1b3b77b37b4951ba529021a22289f81f7a2c3ba3b5ead'
   }
   return hash[chainId] ? hash[chainId] : hash[5]
 }
