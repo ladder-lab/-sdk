@@ -7,7 +7,8 @@ export declare enum ChainId {
     GÖRLI = 5,
     KOVAN = 42,
     BSC = 56,
-    SEPOLIA=11155111
+    SEPOLIA = 11155111,
+    MATIC = 137
 }
 export declare enum TradeType {
     EXACT_INPUT = 0,
@@ -24,7 +25,8 @@ const init_hash_721 = (chainId) => {
     [56]: '',
     [4]: '0x5ec183c910dde62b453e2ec8cccc3e2e88361521812cd72a9225360027ece5ae',
     [5]: '0x0c1c6aa59d5605cb5e03b2231bdcf0f5aac2ee335d521e7780d25cdb5bfcae07',
-    [11155111]: '0x5acff355a68640e94260f0b7e504e22ab80d937541341ce2e1a48a3a55d4d106'
+    [11155111]: '0x5acff355a68640e94260f0b7e504e22ab80d937541341ce2e1a48a3a55d4d106',
+    [137]:'0xf7ca797cd52f4c663f69b6095f74f96ca51c28e26c8377c2f3863f2b98c98d20'
   }
   return hash[chainId] ? hash[chainId] : hash[5]
 }
@@ -34,7 +36,8 @@ const init_hash = (chainId) => {
     [56]: '0x9ec8c8ff3b18dfb14fac50eaf8f1f0222c424b82ab776a7b394271de4c1a8e9f',
     [4]: '0x7842a3ea267789f9cac67fced95cf3f35c1f5f518317922ae0e6889f2e088f0b',
     [5]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069',
-    [11155111]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069'
+    [11155111]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069',
+    [137]:'0x6de47bfb1462612b4c598e26822445376ee20fd7faf11dd8839ea4f8e6d676b5'
   }
   return hash[chainId] ? hash[chainId] : hash[5]
 }
@@ -44,7 +47,8 @@ const factory_addresses721 = (chainId) => {
     [56]: '',
     [4]: '0x50A180230A11734FFD1A9A55e80c442387d42931',
     [5]: '0xfE354EA7a06f6dBDEF06F087C4Be5A6d4E021442',
-    [11155111]: '0x09B78CACaCC648d821924656b87D5FD2eb05E20d'
+    [11155111]: '0x09B78CACaCC648d821924656b87D5FD2eb05E20d',
+    [137]:'0xc5240a99cd17225B4E2471101aCA86d84a3ed295'
   }
   return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
@@ -54,7 +58,8 @@ const factory_addresses = (chainId) => {
     [56]: '0xa1bf45AF7cDe8c105054611383E8ae3dA65615a3',
     [4]: '0xB4AA7ce0558A8EbfC943928d6F3E5ceCc1650a46',
     [5]: '0x075333bF761555D28D78E40232ABdC548083C3D7',
-    [11155111]: '0x83b115AdC58A951B77cD249b41977B2Fd1f13772'
+    [11155111]: '0x83b115AdC58A951B77cD249b41977B2Fd1f13772',
+    [137]:'0x03dD3b632b767e808E9b3De47852e90250112382'
   }
   return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
