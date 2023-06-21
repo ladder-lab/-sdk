@@ -47,7 +47,7 @@ const factory_addresses721 = (chainId) => {
     [4]: '0x50A180230A11734FFD1A9A55e80c442387d42931',
     [5]: '0xfE354EA7a06f6dBDEF06F087C4Be5A6d4E021442',
     [11155111]: '0x6413e73875EF1B4D315D5247bdc6d3BF311de4e5',
-    [137]: '0xc5240a99cd17225B4E2471101aCA86d84a3ed295'
+    [137]: '0x8d82e94BD2C37E66319A65fb28D6A5E188FC16D0'
   }
   return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
@@ -58,7 +58,7 @@ const factory_addresses = (chainId) => {
     [4]: '0xB4AA7ce0558A8EbfC943928d6F3E5ceCc1650a46',
     [5]: '0x075333bF761555D28D78E40232ABdC548083C3D7',
     [11155111]: '0x83b115AdC58A951B77cD249b41977B2Fd1f13772',
-    [137]: '0x03dD3b632b767e808E9b3De47852e90250112382'
+    [137]: '0x590184D7c808c1f68304dEbDCeABec039226CBe5'
   }
   return addresses[chainId] ? addresses[chainId] : addresses[5]
 }
@@ -72,7 +72,7 @@ const init_hash_721 = (chainId) => {
     [4]: '0x5ec183c910dde62b453e2ec8cccc3e2e88361521812cd72a9225360027ece5ae',
     [5]: '0x0c1c6aa59d5605cb5e03b2231bdcf0f5aac2ee335d521e7780d25cdb5bfcae07',
     [11155111]: '0xc2bc06960c042b0e4df1b3b77b37b4951ba529021a22289f81f7a2c3ba3b5ead',
-    [137]: '0xf7ca797cd52f4c663f69b6095f74f96ca51c28e26c8377c2f3863f2b98c98d20'
+    [137]: '0xd571a2ec70286a66710b7029e14f4f0d1bab03efe3b224bf55b5247a87889ad9'
   }
   return hash[chainId] ? hash[chainId] : hash[5]
 }
@@ -83,7 +83,7 @@ const init_hash = (chainId) => {
     [4]: '0x7842a3ea267789f9cac67fced95cf3f35c1f5f518317922ae0e6889f2e088f0b',
     [5]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069',
     [11155111]: '0x340b5d80515b108122de5e560de62961080d006845634656ff84db6d94c7d069',
-    [137]: '0x6de47bfb1462612b4c598e26822445376ee20fd7faf11dd8839ea4f8e6d676b5'
+    [137]: '0x91a521d3200632f6f18c2d161b34446d17ee5a8126366b0e8c30a668837f4a6d'
   }
   return hash[chainId] ? hash[chainId] : hash[5]
 }
