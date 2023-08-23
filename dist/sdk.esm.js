@@ -43,7 +43,7 @@ var Rounding;
 
 const factory_addresses721 = (chainId) => {
   const addresses = {
-    [56]: '0xc297F372747659230300fB30B55C23bfC87e474D',
+    [56]: '0x50955e89D6f2e993533D55D843150e27502410aD',
     [4]: '0x50A180230A11734FFD1A9A55e80c442387d42931',
     [5]: '0xfE354EA7a06f6dBDEF06F087C4Be5A6d4E021442',
     [11155111]: '0x6413e73875EF1B4D315D5247bdc6d3BF311de4e5',
@@ -68,7 +68,7 @@ var FACTORY_ADDRESS = (chainId, is721Pair) => is721Pair ? factory_addresses721(c
 
 const init_hash_721 = (chainId) => {
   const hash = {
-    [56]: '0xf7ca797cd52f4c663f69b6095f74f96ca51c28e26c8377c2f3863f2b98c98d20',
+    [56]: '0xcd5642b68e55aa7f8d4c96b8bbadc59e4ffffc8d1d8d9f0f54703fa0c1a2e15d',
     [4]: '0x5ec183c910dde62b453e2ec8cccc3e2e88361521812cd72a9225360027ece5ae',
     [5]: '0x0c1c6aa59d5605cb5e03b2231bdcf0f5aac2ee335d521e7780d25cdb5bfcae07',
     [11155111]: '0xc2bc06960c042b0e4df1b3b77b37b4951ba529021a22289f81f7a2c3ba3b5ead',
