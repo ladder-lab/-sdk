@@ -14,7 +14,6 @@ import IUniswapV2Pair from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 
 var _SOLIDITY_TYPE_MAXIMA
 var ChainId
-
 ;(function(ChainId) {
   ChainId[(ChainId['MAINNET'] = 1)] = 'MAINNET'
   ChainId[(ChainId['ROPSTEN'] = 3)] = 'ROPSTEN'
@@ -28,14 +27,12 @@ var ChainId
 })(ChainId || (ChainId = {}))
 
 var TradeType
-
 ;(function(TradeType) {
   TradeType[(TradeType['EXACT_INPUT'] = 0)] = 'EXACT_INPUT'
   TradeType[(TradeType['EXACT_OUTPUT'] = 1)] = 'EXACT_OUTPUT'
 })(TradeType || (TradeType = {}))
 
 var Rounding
-
 ;(function(Rounding) {
   Rounding[(Rounding['ROUND_DOWN'] = 0)] = 'ROUND_DOWN'
   Rounding[(Rounding['ROUND_HALF_UP'] = 1)] = 'ROUND_HALF_UP'
@@ -107,7 +104,6 @@ var _997 = /*#__PURE__*/ JSBI.BigInt(997)
 var _947 = /*#__PURE__*/ JSBI.BigInt(947)
 var _1000 = /*#__PURE__*/ JSBI.BigInt(1000)
 var SolidityType
-
 ;(function(SolidityType) {
   SolidityType['uint8'] = 'uint8'
   SolidityType['uint256'] = 'uint256'
@@ -605,6 +601,13 @@ var WETH =
     18,
     'WMATIC',
     'Wrapped Matic'
+  )),
+  (_WETH[ChainId.ETHERLINK] = /*#__PURE__*/ new Token(
+    ChainId.ETHERLINK,
+    '0x281B137369F9446BdA014BB44e1Be269300634B5',
+    18,
+    'WETH',
+    'Wrapped Ether'
   )),
   _WETH)
 

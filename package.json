@@ -1,7 +1,7 @@
 {
   "name": "@ladder/sdk",
   "license": "MIT",
-  "version": "2.0.3-alpha",
+  "version": "2.0.4-alpha",
   "description": "🛠 An SDK for Ladder protocol.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
