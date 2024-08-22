@@ -1909,7 +1909,7 @@ var Router = /*#__PURE__*/ (function() {
     var to = validateAndParseAddress(options.recipient)
     var amountIn = toHex(trade.maximumAmountIn(options.allowedSlippage))
     // var amountOut = toHex(trade.minimumAmountOut(options.allowedSlippage))
-    var amountOut = toHex(0)
+    var amountOut = 0
     var path = trade.route.path.map(function(token) {
       return token.address
     })
