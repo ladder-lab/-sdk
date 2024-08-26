@@ -587,7 +587,8 @@ var WETH =
   )),
   (_WETH[ChainId.SEPOLIA] = /*#__PURE__*/ new Token(
     ChainId.SEPOLIA,
-    '0xA4560E8B4694B437d77452eBc2dE179AAA1137C3',
+    // '0xA4560E8B4694B437d77452eBc2dE179AAA1137C3',
+    '0x8cC648CFa063AaED044601957D317f1d8Ceb528F',
     18,
     'WETH',
     'Wrapped Ether'
@@ -1893,6 +1894,7 @@ var Router = /*#__PURE__*/ (function() {
    */
 
   Router.swapCallParameters = function swapCallParameters(trade, options) {
+
     var etherIn = trade.inputAmount.currency === ETHER
     var etherOut = trade.outputAmount.currency === ETHER // the router does not support both ether in and out
 
@@ -1908,8 +1910,8 @@ var Router = /*#__PURE__*/ (function() {
       : void 0
     var to = validateAndParseAddress(options.recipient)
     var amountIn = toHex(trade.maximumAmountIn(options.allowedSlippage))
-    // var amountOut = toHex(trade.minimumAmountOut(options.allowedSlippage))
-    var amountOut = 0
+    var amountOut = toHex(trade.minimumAmountOut(options.allowedSlippage))
+    // var amountOut = 0
     var path = trade.route.path.map(function(token) {
       return token.address
     })
