@@ -27,8 +27,8 @@ const init_hash_721 = chainId => {
     [56]: '',
     [4]: '',
     [5]: '',
-    // [11155111]: '0x92b5b00a5369e3cbce91ff0263d855551da6acef450f1b715128f900dfcce24d',
-    [11155111]: '0x1d8c22081a83572671903b6eb67d31e7f48fc44e240ae5422ef85558ccc0c0cb',
+    // [11155111]: '0x1d8c22081a83572671903b6eb67d31e7f48fc44e240ae5422ef85558ccc0c0cb',
+    [11155111]: '0x9da889a4c17cd17756ecbada0d583c909361cdc7fb986356ee8c5767305afb3e',
     [137]: '',
     [128123]: '0xc4bf1712e53e05476e2ef9da9206ce842bb68d2dd45e881fd44a58a75d7b11a6'
   }
@@ -53,8 +53,8 @@ const factory_addresses721 = chainId => {
     [56]: '',
     [4]: '',
     [5]: '',
-    // [11155111]: '0xc5af92f871Aac038e336c9a04bbAFE45C81916f3',
-    [11155111]: '0xc69bdaA5f4D00C44b3D96cBb4278ec96a2438b54',
+    // [11155111]: '0xc69bdaA5f4D00C44b3D96cBb4278ec96a2438b54',
+    [11155111]: '0xd1049936bcE6a4aD9C933fcc0b213Cc548867871',
     [137]: '',
     [128123]: '0xE3E1bc899fa11908A39f2b8d3E62EA0650229c0C'
   }
